@@ -5,29 +5,65 @@
 * @Developed by QuickDevel
 */
 $config = array(
-	/* Основые параметры */
-	'title'			=>		'LitePanel', // Название компании
-	'description'	=>		'Панель управления игровыми серверами LitePanel', // Описание компании (meta description)
-	'keywords'		=>		'', // Ключевые слова (meta keywords)
-	'url'			=>		'http://yourdomain/', // URL панели управления. Пример: http://example.com/
-	'token'			=>		'mytoken123', // Используется для запуска скриптов по cron'у
+	// Название компании.
+	// Пример: ExampleHost
+	'title'			=>		'ExampleHost',
 	
-	/* Параметры базы данных */
-	'db_type'		=>		'mysql', // Тип базы данных
-	'db_hostname'	=>		'localhost', // Хост базы данных
-	'db_username'	=>		'username', // Пользователь базы данных
-	'db_password'	=>		'password', // Пароль базы данных
-	'db_database'	=>		'database', // Имя базы данных
-
-	/* Параметры E-Mail */
-	'mail_from'		=>		'noreply@example.com', // E-Mail отправителя
-	'mail_sender'	=>		'LitePanel Control Panel', // Имя отправителя
-
-	/* Параметры ROBOKASSA */
-	/* Подробнее о данном разделе вы можете узнать по адресу http://litepanel.ru/help/robokassa#litepanel */
-	'rk_server'		=>		'https://merchant.roboxchange.com', // URL мерчанта. Для неактивированных аккаунтов используйте "http://test.robokassa.ru/Index.aspx".
-	'rk_login'		=>		'login', // Логин пользователя
-	'rk_password1'	=>		'pass1', // Пароль 1 пользователя
-	'rk_password2'	=>		'pass2' // Пароль 2 пользователя
+	// Описание компании (meta description).
+	// Пример: Game Hosting ExampleHost
+	'description'	=>		'ExampleHost Game Hosting',
+	
+	// Ключевые слова (meta keywords).
+	// Пример: game hosting, game servers
+	'keywords'		=>		'game hosting, game servers',
+	
+	// URL панели управления.
+	// Обратите внимание на то, что панель управления должна располагаться в корне (под)домена.
+	// http://example.com/, http://cp.example.com/, http://panel.example.com/ - правильно.
+	// http://example.com/panel/ - неправильно.
+	'url'			=>		'http://example.com/',
+	
+	// Токен.
+	// Используется для запуска скриптов из Cron`а.
+	'token'			=>		'mytoken123',
+	
+	// Тип СУБД.
+	// По умолчанию поддерживается только СУБД MySQL (mysql).
+	'db_type'		=>		'mysql',
+	
+	// Хост БД.
+	// Пример: localhost, 127.0.0.1, db.example.com и пр.
+	'db_hostname'	=>		'localhost',
+	
+	// Имя пользователя СУБД.
+	'db_username'	=>		'username',
+	
+	// Пароль пользователя СУБД.
+	'db_password'	=>		'password',
+	
+	// Название БД.
+	'db_database'	=>		'database',
+	
+	// E-Mail отправителя.
+	// Пример: support@example.com, noreply@example.com
+	'mail_from'		=>		'support@example.com',
+	
+	// Имя отправителя.
+	// Пример: ExampleHost Support
+	'mail_sender'	=>		'ExampleHost Support',
+	
+	// URL мерчанта.
+	// Для активированных аккаунтов - https://merchant.roboxchange.com
+	// Для неактивированных аккаунтов - http://test.robokassa.ru/Index.aspx
+	'rk_server'		=>		'https://merchant.roboxchange.com',
+	
+	// Логин в системе ROBOKASSA.
+	'rk_login'		=>		'login',
+	
+	// Пароль №1 в системе ROBOKASSA.
+	'rk_password1'	=>		'pass1',
+	
+	// Пароль №2 в системе ROBOKASSA.
+	'rk_password2'	=>		'pass2'
 );
 ?>
