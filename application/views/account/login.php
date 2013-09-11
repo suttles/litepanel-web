@@ -26,7 +26,7 @@
 						<div class="control-group">
 							<!-- Кнопка -->
 							<div class="controls">
-								<button type="submit" class="btn btn-success"><i class="icon-ok"></i> Вход</button> <a class="btn btn-mini" href="/account/register">У Вас нет аккаунта?</a>
+								<button type="submit" class="btn btn-success"><i class="icon-ok"></i> Вход</button> <a class="btn btn-mini" href="/account/restore">Забыли пароль?</a>
 							</div>
 						</div>
 					</fieldset>

@@ -84,6 +84,12 @@ class usersModel extends Model {
 		return $query->row;
 	}
 	
+	public function getUserByEmail($useremail) {
+		$sql = "SELECT * FROM `users` WHERE `user_email` = '" . $this->db->escape($useremail) . "' LIMIT 1";
+		$query = $this->db->query($sql);
+		return $query->row;
+	}
+	
 	public function getTotalUsers($data = array()) {
 		$sql = "SELECT COUNT(*) AS count FROM `users`";
 		if(!empty($data)) {
