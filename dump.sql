@@ -79,7 +79,9 @@ CREATE TABLE `users` (
   `user_lastname` varchar(32) DEFAULT NULL,
   `user_status` int(1) DEFAULT NULL,
   `user_balance` decimal(10,2) DEFAULT NULL,
+  `user_restore_key` varchar(32) DEFAULT NULL,
   `user_access_level` int(1) DEFAULT NULL,
   `user_date_reg` datetime DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
