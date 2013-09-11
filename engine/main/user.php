@@ -1,7 +1,6 @@
 <?php
 /*
 * @LitePanel
-* @Version: 1.1 [dev]
 * @Developed by QuickDevel
 */
 class User {
