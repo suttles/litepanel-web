@@ -69,8 +69,8 @@
 							<label class="control-label" for="status">Статус</label>
 							<div class="controls">
 								<select id="status" name="status" class="input-large">
-									<option value="0" <?php if($game['game_status'] == 0): ?>selected="selected"<?php endif; ?>>0 - Выключена</option>
-									<option value="1" <?php if($game['game_status'] == 1): ?>selected="selected"<?php endif; ?>>1 - Включена</option>
+									<option value="0" <?php if($game['game_status'] == 0): ?>selected="selected"<?php endif; ?>>Выключена</option>
+									<option value="1" <?php if($game['game_status'] == 1): ?>selected="selected"<?php endif; ?>>Включена</option>
 								</select>
 							</div>
 						</div>

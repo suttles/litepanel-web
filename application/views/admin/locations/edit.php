@@ -8,7 +8,7 @@
 				<h2>Редактирование локации</h2>
 				<a class="btn btn-danger pull-right" href="/admin/locations/edit/delete/<?php echo $location['location_id'] ?>">Удалить локацию</a>
 				<div class="btn-group">
-					<a class="btn" href="/admin/servers/index?locationid=<?php echo $location['location_id'] ?>">Сервера локации</a>
+					<a class="btn" href="/admin/servers/index?locationid=<?php echo $location['location_id'] ?>"><i class="icon-hdd"></i> Сервера локации</a>
 				</div>
 				<form class="form-horizontal" action="#" id="editForm" method="POST">
 					<fieldset>
@@ -66,8 +66,8 @@
 							<label class="control-label" for="status">Статус</label>
 							<div class="controls">
 								<select id="status" name="status" class="input-large">
-									<option value="0" <?php if($location['location_status'] == 0): ?>selected="selected"<?php endif; ?>>0 - Выключена</option>
-									<option value="1" <?php if($location['location_status'] == 1): ?>selected="selected"<?php endif; ?>>1 - Включена</option>
+									<option value="0" <?php if($location['location_status'] == 0): ?>selected="selected"<?php endif; ?>>Выключена</option>
+									<option value="1" <?php if($location['location_status'] == 1): ?>selected="selected"<?php endif; ?>>Включена</option>
 								</select>
 							</div>
 						</div>

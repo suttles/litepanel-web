@@ -57,8 +57,8 @@
 							<label class="control-label" for="status">Статус</label>
 							<div class="controls">
 								<select id="status" name="status" class="input-large">
-									<option value="0">0 - Выключена</option>
-									<option value="1">1 - Включена</option>
+									<option value="0">Выключена</option>
+									<option value="1">Включена</option>
 								</select>
 							</div>
 						</div>

@@ -7,9 +7,9 @@
 <?php echo $header ?>
 				<h2>Редактирование пользователя</h2>
 				<div class="btn-group">
-					<a class="btn" href="/admin/servers/index?userid=<?php echo $user['user_id'] ?>">Сервера пользователя</a>
-					<a class="btn" href="/admin/tickets/index?userid=<?php echo $user['user_id'] ?>">Тикеты пользователя</a>
-					<a class="btn" href="/admin/invoices/index?userid=<?php echo $user['user_id'] ?>">Счета пользователя</a>
+					<a class="btn" href="/admin/servers/index?userid=<?php echo $user['user_id'] ?>"><i class="icon-hdd"></i> Сервера пользователя</a>
+					<a class="btn" href="/admin/tickets/index?userid=<?php echo $user['user_id'] ?>"><i class="icon-headphones"></i> Тикеты пользователя</a>
+					<a class="btn" href="/admin/invoices/index?userid=<?php echo $user['user_id'] ?>"><i class="icon-list-alt"></i> Счета пользователя</a>
 				</div>
 				<form class="form-horizontal" action="#" id="editForm" method="POST">
 					<fieldset>
@@ -34,9 +34,9 @@
 							<!-- Статус -->
 							<label class="control-label" for="locationid">Статус</label>
 							<div class="controls">
-								<select id="status" name="status" class="input-small">
-									<option value="0" <?php if($user['user_status'] == 0): ?>selected="selected"<?php endif; ?>>0 - Выкл</option>
-									<option value="1" <?php if($user['user_status'] == 1): ?>selected="selected"<?php endif; ?>>1 - Вкл</option>
+								<select id="status" name="status" class="input-medium">
+									<option value="0" <?php if($user['user_status'] == 0): ?>selected="selected"<?php endif; ?>>Заблокирован</option>
+									<option value="1" <?php if($user['user_status'] == 1): ?>selected="selected"<?php endif; ?>>Разблокирован</option>
 								</select>
 							</div>
 						</div>
@@ -48,14 +48,14 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<!-- Статус -->
-							<label class="control-label" for="locationid">Статус</label>
+							<!-- Уровень доступа -->
+							<label class="control-label" for="locationid">Уровень доступа</label>
 							<div class="controls">
 								<select id="accesslevel" name="accesslevel" class="input-large">
-									<option value="0" <?php if($user['user_access_level'] == 0): ?>selected="selected"<?php endif; ?>>0 - Демонстрация</option>
-									<option value="1" <?php if($user['user_access_level'] == 1): ?>selected="selected"<?php endif; ?>>1 - Клиент</option>
-									<option value="2" <?php if($user['user_access_level'] == 2): ?>selected="selected"<?php endif; ?>>2 - Техническая поддержка</option>
-									<option value="3" <?php if($user['user_access_level'] == 3): ?>selected="selected"<?php endif; ?>>3 - Администрация</option>
+									<option value="0" <?php if($user['user_access_level'] == 0): ?>selected="selected"<?php endif; ?>>Демонстрация</option>
+									<option value="1" <?php if($user['user_access_level'] == 1): ?>selected="selected"<?php endif; ?>>Клиент</option>
+									<option value="2" <?php if($user['user_access_level'] == 2): ?>selected="selected"<?php endif; ?>>Техническая поддержка</option>
+									<option value="3" <?php if($user['user_access_level'] == 3): ?>selected="selected"<?php endif; ?>>Администрация</option>
 								</select>
 							</div>
 						</div>
