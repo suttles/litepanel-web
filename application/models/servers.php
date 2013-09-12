@@ -130,7 +130,7 @@ class serversModel extends Model {
 	}
 	
 	public function getServerNewPort($locationid, $min, $max) {
-		for($i = $min; $i < $max; $i += 2) {
+		for($i = $min; $i <= $max; $i += 2) {
 			$sql = "SELECT COUNT(*) AS total FROM `servers` WHERE location_id = '" . (int)$locationid . "' AND server_port = '" . (int)$i . "' LIMIT 1";
 			$query = $this->db->query($sql);
 			if($query->row['total'] == 0) {

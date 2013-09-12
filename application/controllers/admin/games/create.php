@@ -101,6 +101,14 @@ class createController extends Controller {
 		elseif(!in_array($query, $this->getQueryDrivers())) {
 			$result = "Укажите допустимый Query-драйвер.";
 		}
+		elseif($maxslots < $minslots)
+		{
+			$result = "Укажите допустимый интервал слотов.";
+		}
+		elseif($maxport < $minport)
+		{
+			$result = "Укажите допустимый интервал портов.";
+		}
 		elseif(!$validateLib->money($price)) {
 			$result = "Укажите допустимую стоимость!";
 		}
