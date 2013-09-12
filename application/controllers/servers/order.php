@@ -21,7 +21,16 @@ class orderController extends Controller {
 		$this->load->model('locations');
 		
 		$games = $this->gamesModel->getGames(array('game_status' => 1));
+		if(count($games) <= 0) {
+			$this->session->data['error'] = "На данный момент нет доступных игр!";
+			$this->response->redirect($this->config->url);
+		}
+		
 		$locations = $this->locationsModel->getLocations(array('location_status' => 1));
+		if(count($games) <= 0) {
+			$this->session->data['error'] = "На данный момент нет доступных локаций!";
+			$this->response->redirect($this->config->url);
+		}
 		
 		$this->data['games'] = $games;
 		$this->data['locations'] = $locations;
