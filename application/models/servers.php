@@ -172,7 +172,7 @@ class serversModel extends Model {
 		
 		$server = $this->getServerById($serverid, array('users', 'locations', 'games'));
 		$link = $ssh2Lib->connect($server['location_ip'], $server['location_user'], $server['location_password']);
-		$exec = "/home/cp/gameservers.py $action $server[server_id] $server[game_code] $server[location_ip] $server[server_port] $server[server_slots] $server[server_password]";
+		$exec = "/home/cp/gameservers.py -action $action -sid $server[server_id] -game $server[game_code] -ip $server[location_ip] -port $server[server_port] -slots $server[server_slots] -password $server[server_password]";
 		$output = $ssh2Lib->execute($link, $exec);
 		$ssh2Lib->disconnect($link);
 		return $output;
