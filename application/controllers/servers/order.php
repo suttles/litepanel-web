@@ -112,7 +112,7 @@ class orderController extends Controller {
 						$this->serversModel->updateServer($serverid, array('server_status' => 1));
 					
 						$this->data['status'] = "success";
-						$this->data['success'] = "Сервер будет установлен в течении 10 минут!";
+						$this->data['success'] = "Сервер успешно установлен!";
 						$this->data['id'] = $serverid;
 					} else {
 						$this->data['status'] = "error";

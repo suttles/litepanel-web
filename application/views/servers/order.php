@@ -124,6 +124,7 @@
 						},
 						beforeSubmit: function(arr, $form, options) {
 							$('button[type=submit]').prop('disabled', true);
+							showWarning("Установка сервера завершится в течении 15 минут!");
 						}
 					});
 					
