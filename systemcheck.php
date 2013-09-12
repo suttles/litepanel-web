@@ -67,19 +67,19 @@ if(in_array('mod_rewrite', apache_get_modules()))
 	</tr>
 	<tr class="<?php if($mysqlExists): ?>success<?php else: ?>error<?php endif; ?>">
 		<th>Наличие php_mysql</th>
-		<td><?php if($mysqlExists): ?>Да<?php else: ?><b>Нет</b><?php endif; ?></td>
+		<td><?php if($mysqlExists): ?>Установлен<?php else: ?><i>Для установки используйте "apt-get install php5-mysql"</i><?php endif; ?></td>
 	</tr>
 	<tr class="<?php if($ssh2Exists): ?>success<?php else: ?>error<?php endif; ?>">
 		<th>Наличие php_ssh2</th>
-		<td><?php if($ssh2Exists): ?>Да<?php else: ?><b>Нет</b><?php endif; ?></td>
+		<td><?php if($ssh2Exists): ?>Установлен<?php else: ?><i>Для установки используйте "apt-get install libssh2-php"</i><?php endif; ?></td>
 	</tr>
 	<tr class="<?php if($gdExists): ?>success<?php else: ?>error<?php endif; ?>">
 		<th>Наличие php_gd</th>
-		<td><?php if($gdExists): ?>Да<?php else: ?><b>Нет</b><?php endif; ?></td>
+		<td><?php if($gdExists): ?>Установлен<?php else: ?><i>Для установки используйте "apt-get install php5-gd"</i><?php endif; ?></td>
 	</tr>
 	<tr class="<?php if($modRewriteExists): ?>success<?php else: ?>error<?php endif; ?>">
 		<th>Наличие mod_rewrite</th>
-		<td><?php if($modRewriteExists): ?>Да<?php else: ?><b>Нет</b><?php endif; ?></td>
+		<td><?php if($modRewriteExists): ?>Установлен<?php else: ?><i>Для установки используйте "a2enmod rewrite"</i><?php endif; ?></td>
 	</tr>
 </table>
 </div>
