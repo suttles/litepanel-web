@@ -81,9 +81,9 @@
 						</div>
 						<div class="control-group">
 							<!-- Стоимость -->
-							<label class="control-label" for="price">Стоимость</label>
+							<label class="control-label" for="price">Итого</label>
 							<div class="controls">
-								<input type="text" id="price" class="input-small">
+								<p class="lead" id="price">0.00 рублей.</p>
 							</div>
 						</div>
 						<div class="control-group">
@@ -124,7 +124,7 @@
 						},
 						beforeSubmit: function(arr, $form, options) {
 							$('button[type=submit]').prop('disabled', true);
-							showWarning("Установка сервера завершится в течении 15 минут!");
+							showWarning("Сервер будет установлен в течении 10 минут!");
 						}
 					});
 					
@@ -156,7 +156,7 @@
 								price = 12*price*0.85;
 								break;
 						}
-						$('#price').val(price.toFixed(2) + ' руб.');
+						$('#price').text(price.toFixed(2) + ' руб.');
 					}
 					
 					function plusSlots() {

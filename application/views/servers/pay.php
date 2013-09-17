@@ -30,7 +30,7 @@
 							<!-- Стоимость -->
 							<label class="control-label" for="price">Стоимость</label>
 							<div class="controls">
-								<input type="text" id="price" class="input-small">
+								<p class="lead" id="price">0.00 рублей.</p>
 							</div>
 						</div>
 						<div class="control-group">
@@ -81,7 +81,7 @@
 								price = 12*price*0.85;
 								break;
 						}
-						$('#price').val(price.toFixed(2) + ' руб.');
+						$('#price').text(price.toFixed(2) + ' руб.');
 					}
 				</script>
 <?php echo $footer ?>
