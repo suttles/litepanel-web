@@ -5,72 +5,58 @@
 */
 ?>
 <?php echo $header ?>
-				<h2>Создание локации</h2>
-				<form class="form-horizontal" action="#" id="createForm" method="POST">
-					<fieldset>
-						<div id="legend">
-							<legend>Основные параметры</legend>
+				<div class="page-header">
+					<h1>Создание локации</h1>
+				</div>
+				<form class="form-horizontal" action="#" id="editForm" method="POST">
+					<h3>Основная информация</h3>
+					<div class="form-group">
+						<label for="name" class="col-sm-3 control-label">Название:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="name" name="name" placeholder="Введите название">
 						</div>
-						<div class="control-group">
-							<!-- Название -->
-							<label class="control-label" for="name">Название</label>
-							<div class="controls">
-								<input type="text" id="name" name="name" class="input-xlarge">
-							</div>
+					</div>
+					<div class="form-group">
+						<label for="ip" class="col-sm-3 control-label">IP:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="ip" name="ip" placeholder="Введите IP">
 						</div>
-						<div class="control-group">
-							<!-- IP -->
-							<label class="control-label" for="ip">IP</label>
-							<div class="controls">
-								<input type="text" id="ip" name="ip" class="input-xlarge">
-							</div>
+					</div>
+					<div class="form-group">
+						<label for="user" class="col-sm-3 control-label">Имя пользователя:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="user" name="user" placeholder="Введите имя пользователя">
 						</div>
-						<div class="control-group">
-							<!-- Пользователь -->
-							<label class="control-label" for="user">Пользователь</label>
-							<div class="controls">
-								<input type="text" id="user" name="user" class="input-xlarge">
-							</div>
+					</div>
+					<h3>Пароль</h3>
+					<div class="form-group">
+						<label for="password" class="col-sm-3 control-label">Пароль:</label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" id="password" name="password" placeholder="Пароль">
 						</div>
-						<div id="legend">
-							<legend>Пароль</legend>
+					</div>
+					<div class="form-group">
+						<label for="password2" class="col-sm-3 control-label">Повторите пароль:</label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" id="password2" name="password2" placeholder="Повторите пароль">
 						</div>
-						<div class="control-group">
-							<!-- Пароль -->
-							<label class="control-label" for="password">Пароль</label>
-							<div class="controls">
-								<input type="password" id="password" name="password" class="input-xlarge">
-							</div>
+					</div>
+					<h3>Дополнительная информация</h3>
+					<div class="form-group">
+						<label for="status" class="col-sm-3 control-label">Статус:</label>
+						<div class="col-sm-3">
+							<select class="form-control" id="status" name="status">
+								<option value="0">Выключена</option>
+								<option value="1">Включена</option>
+							</select>
 						</div>
-						<div class="control-group">
-							<!-- Повтор пароля -->
-							<label class="control-label" for="password">Повторите пароль</label>
-							<div class="controls">
-								<input type="password" id="password2" name="password2" class="input-xlarge">
-							</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-primary">Создать</button>
 						</div>
-						<div id="legend">
-							<legend>Прочее</legend>
-						</div>
-						<div class="control-group">
-							<!-- Статус -->
-							<label class="control-label" for="status">Статус</label>
-							<div class="controls">
-								<select id="status" name="status" class="input-large">
-									<option value="0">Выключена</option>
-									<option value="1">Включена</option>
-								</select>
-							</div>
-						</div>
-						<div class="control-group">
-							<!-- Кнопка -->
-							<div class="controls">
-								<button type="submit" class="btn btn-success"><i class="icon-ok"></i> Сохранить</button>
-							</div>
-						</div>
-					</fieldset>
+					</div>
 				</form>
-				
 				<script>
 					$('#createForm').ajaxForm({ 
 						url: '/admin/locations/create/ajax',

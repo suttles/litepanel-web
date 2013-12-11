@@ -5,23 +5,25 @@
 */
 ?>
 <?php echo $header ?>
-				<h2>Пополнение баланса</h2>				
+				<div class="page-header">
+					<h1>Пополнение баланса</h1>
+				</div>
 				<form class="form-horizontal" action="#" id="payForm" method="POST">
-					<fieldset>
-						<div class="control-group">
-							<!-- Сумма -->
-							<label class="control-label" for="ammount">Сумма</label>
-							<div class="controls">
-								<input type="text" id="ammount" name="ammount" class="input-small" value="100.00"> руб
+					<h3>Основная информация</h3>
+					<div class="form-group">
+						<label for="ammount" class="col-sm-3 control-label">Сумма:</label>
+						<div class="col-sm-3">
+							<div class="input-group">
+								<input type="text" class="form-control" id="ammount" name="ammount" placeholder="Введите сумму">
+								<span class="input-group-addon">руб.</span>
 							</div>
 						</div>
-						<div class="control-group">
-							<!-- Кнопка -->
-							<div class="controls">
-								<button type="submit" class="btn btn-success"><i class="icon-ok"></i> Продолжить</button>
-							</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-primary">Продолжить</button>
 						</div>
-					</fieldset>
+					</div>
 				</form>
 				<script>
 					$('#payForm').ajaxForm({ 

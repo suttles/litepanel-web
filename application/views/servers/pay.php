@@ -5,41 +5,34 @@
 */
 ?>
 <?php echo $header ?>
-				<h2>Оплата сервера</h2>
+				<div class="page-header">
+					<h1>Оплата сервера</h1>
+				</div>
 				<form class="form-horizontal" action="#" id="payForm" method="POST">
-					<fieldset>
-						<div id="legend">
-							<legend>Общая информация</legend>
+					<h3>Основная информация</h3>
+					<div class="form-group">
+						<label for="months" class="col-sm-3 control-label">Период оплаты:</label>
+						<div class="col-sm-3">
+							<select class="form-control" id="months" onChange="updatePrice()">
+								<option value="1">1 месяц</option>
+								<option value="3">3 месяца (-5%)</option>
+								<option value="6">6 месяцев (-10%)</option>
+								<option value="12">12 месяцев (-15%)</option>
+							</select>
 						</div>
-						<div class="control-group">
-							<!-- Период оплаты -->
-							<label class="control-label" for="months">Период оплаты</label>
-							<div class="controls">
-								<select id="months" name="months" onChange="updatePrice()">
-									<option value="1">1 месяц</option>
-									<option value="3">3 месяца (-5%)</option>
-									<option value="6">6 месяцев (-10%)</option>
-									<option value="12">12 месяцев (-15%)</option>
-								</select>
-							</div>
+					</div>
+					<h3>Стоимость</h3>
+					<div class="form-group">
+						<label for="price" class="col-sm-3 control-label">Итого:</label>
+						<div class="col-sm-5">
+							<p class="lead" id="price">0.00 руб.</p>
 						</div>
-						<div id="legend">
-							<legend>Стоимость</legend>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-primary">Заказать</button>
 						</div>
-						<div class="control-group">
-							<!-- Стоимость -->
-							<label class="control-label" for="price">Стоимость</label>
-							<div class="controls">
-								<p class="lead" id="price">0.00 рублей.</p>
-							</div>
-						</div>
-						<div class="control-group">
-							<!-- Кнопка -->
-							<div class="controls">
-								<button class="btn btn-success"><i class="icon-ok"></i> Оплатить</button>
-							</div>
-						</div>
-					</fieldset>
+					</div>
 				</form>
 				<script>
 					$('#payForm').ajaxForm({ 
@@ -72,13 +65,13 @@
 						var months = $("#months option:selected").val();
 						switch(months) {
 							case "3":
-								price = 3*price*0.95;
+								price = 3 * price * 0.95;
 								break;
 							case "6":
-								price = 6*price*0.90;
+								price = 6 * price * 0.90;
 								break;
 							case "12":
-								price = 12*price*0.85;
+								price = 12 * price * 0.85;
 								break;
 						}
 						$('#price').text(price.toFixed(2) + ' руб.');

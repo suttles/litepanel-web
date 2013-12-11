@@ -5,89 +5,79 @@
 */
 ?>
 <?php echo $header ?>
-				<h2>Редактирование пользователя</h2>
+				<div class="page-header">
+					<h1>Редактирование пользователя</h1>
+				</div>
 				<div class="btn-group">
-					<a class="btn" href="/admin/servers/index?userid=<?php echo $user['user_id'] ?>"><i class="icon-hdd"></i> Сервера пользователя</a>
-					<a class="btn" href="/admin/tickets/index?userid=<?php echo $user['user_id'] ?>"><i class="icon-headphones"></i> Тикеты пользователя</a>
-					<a class="btn" href="/admin/invoices/index?userid=<?php echo $user['user_id'] ?>"><i class="icon-list-alt"></i> Счета пользователя</a>
+					<a href="/admin/servers/index?userid=<?php echo $user['user_id'] ?>"" class="btn btn-default"><span class="glyphicon glyphicon-hdd"></span> Сервера пользователя</a>
+					<a href="/admin/tickets/index?userid=<?php echo $user['user_id'] ?>"" class="btn btn-default"><span class="glyphicon glyphicon-headphones"></span> Запросы пользователя</a>
+					<a href="/admin/invoices/index?userid=<?php echo $user['user_id'] ?>"" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> Счета пользователя</a>
 				</div>
 				<form class="form-horizontal" action="#" id="editForm" method="POST">
-					<fieldset>
-						<div id="legend">
-							<legend>Основные параметры</legend>
+					<h3>Основная информация</h3>
+					<div class="form-group">
+						<label for="firstname" class="col-sm-3 control-label">Имя:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="firstname" name="firstname" placeholder="Введите имя" value="<?php echo $user['user_firstname'] ?>">
 						</div>
-						<div class="control-group">
-							<!-- Имя -->
-							<label class="control-label"  for="firstname">Имя</label>
-							<div class="controls">
-								<input type="text" id="firstname" name="firstname" class="input-xlarge" value="<?php echo $user['user_firstname'] ?>">
+					</div>
+					<div class="form-group">
+						<label for="lastname" class="col-sm-3 control-label">Фамилия:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="lastname" name="lastname" placeholder="Введите фамилию" value="<?php echo $user['user_lastname'] ?>">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="status" class="col-sm-3 control-label">Статус:</label>
+						<div class="col-sm-3">
+							<select class="form-control" id="status" name="status">
+								<option value="0"<?php if($user['user_status'] == 0): ?> selected="selected"<?php endif; ?>>Заблокирован</option>
+								<option value="1"<?php if($user['user_status'] == 1): ?> selected="selected"<?php endif; ?>>Разблокирован</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="lastname" class="col-sm-3 control-label">Баланс:</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" id="balance" name="balance" placeholder="Введите баланс" value="<?php echo $user['user_balance'] ?>">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="accesslevel" class="col-sm-3 control-label">Уровень доступа:</label>
+						<div class="col-sm-3">
+							<select class="form-control" id="accesslevel" name="accesslevel">
+								<option value="0"<?php if($user['user_access_level'] == 0): ?> selected="selected"<?php endif; ?>>Демонстрация</option>
+								<option value="1"<?php if($user['user_access_level'] == 1): ?> selected="selected"<?php endif; ?>>Клиент</option>
+								<option value="2"<?php if($user['user_access_level'] == 2): ?> selected="selected"<?php endif; ?>>Техническая поддержка</option>
+								<option value="3"<?php if($user['user_access_level'] == 3): ?> selected="selected"<?php endif; ?>>Администрация</option>
+							</select>
+						</div>
+					</div>
+					<h3>Пароль</h3>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<div class="checkbox">
+								<label><input type="checkbox" id="editpassword" name="editpassword" onChange="togglePassword()"> Изменить пароль</label>
 							</div>
 						</div>
-						<div class="control-group">
-							<!-- Фамилия -->
-							<label class="control-label"  for="lastname">Фамилия</label>
-							<div class="controls">
-								<input type="text" id="lastname" name="lastname" class="input-xlarge" value="<?php echo $user['user_lastname'] ?>">
-							</div>
+					</div>
+					<div class="form-group">
+						<label for="password" class="col-sm-3 control-label">Пароль:</label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" id="password" name="password" placeholder="Пароль" disabled>
 						</div>
-						<div class="control-group">
-							<!-- Статус -->
-							<label class="control-label" for="locationid">Статус</label>
-							<div class="controls">
-								<select id="status" name="status" class="input-medium">
-									<option value="0" <?php if($user['user_status'] == 0): ?>selected="selected"<?php endif; ?>>Заблокирован</option>
-									<option value="1" <?php if($user['user_status'] == 1): ?>selected="selected"<?php endif; ?>>Разблокирован</option>
-								</select>
-							</div>
+					</div>
+					<div class="form-group">
+						<label for="password2" class="col-sm-3 control-label">Повторите пароль:</label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" id="password2" name="password2" placeholder="Повторите пароль" disabled>
 						</div>
-						<div class="control-group">
-							<!-- Баланс -->
-							<label class="control-label" for="balance">Баланс</label>
-							<div class="controls">
-								<input type="text" id="balance" name="balance" class="input-small" value="<?php echo $user['user_balance'] ?>"> руб
-							</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-primary">Изменить</button>
 						</div>
-						<div class="control-group">
-							<!-- Уровень доступа -->
-							<label class="control-label" for="locationid">Уровень доступа</label>
-							<div class="controls">
-								<select id="accesslevel" name="accesslevel" class="input-large">
-									<option value="0" <?php if($user['user_access_level'] == 0): ?>selected="selected"<?php endif; ?>>Демонстрация</option>
-									<option value="1" <?php if($user['user_access_level'] == 1): ?>selected="selected"<?php endif; ?>>Клиент</option>
-									<option value="2" <?php if($user['user_access_level'] == 2): ?>selected="selected"<?php endif; ?>>Техническая поддержка</option>
-									<option value="3" <?php if($user['user_access_level'] == 3): ?>selected="selected"<?php endif; ?>>Администрация</option>
-								</select>
-							</div>
-						</div>
-						<div id="legend">
-							<legend>Пароль</legend>
-						</div>
-						<div class="control-group">
-							<div class="controls">
-							<label><input type="checkbox" id="editpassword" name="editpassword" onChange="togglePassword()"> Сменить пароль?</label>
-						</div>
-						</div>
-							<div class="control-group">
-							<!-- Пароль -->
-							<label class="control-label" for="password">Пароль</label>
-							<div class="controls">
-								<input type="password" id="password" name="password" class="input-xlarge" disabled>
-							</div>
-						</div>
-						<div class="control-group">
-							<!-- Повтор пароля -->
-							<label class="control-label" for="password">Повторите пароль</label>
-							<div class="controls">
-								<input type="password" id="password2" name="password2" class="input-xlarge" disabled>
-							</div>
-						</div>
-						<div class="control-group">
-							<!-- Кнопка -->
-							<div class="controls">
-								<button type="submit" class="btn btn-success"><i class="icon-ok"></i> Сохранить</button>
-							</div>
-						</div>
-					</fieldset>
+					</div>
 				</form>
 				<script>
 					$('#editForm').ajaxForm({ 

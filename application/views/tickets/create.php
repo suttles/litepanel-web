@@ -5,33 +5,28 @@
 */
 ?>
 <?php echo $header ?>
-				<h1>Создание запроса</h1>
+				<div class="page-header">
+					<h1>Создать запрос</h1>
+				</div>
 				<form class="form-horizontal" action="#" id="createForm" method="POST">
-					<fieldset>
-						<div id="legend">
-							<legend>Общая информация</legend>
+					<h3>Основная информация</h3>
+					<div class="form-group">
+						<label for="text" class="col-sm-3 control-label">Тема:</label>
+						<div class="col-sm-5">
+							<input type="text" class="form-control" id="name" name="name" placeholder="Введите тему">
 						</div>
-						<div class="control-group">
-							<!-- Период оплаты -->
-							<label class="control-label" for="months">Тема</label>
-							<div class="controls">
-								<input type="text" id="name" name="name" class="input-large">
-							</div>
+					</div>
+					<div class="form-group">
+						<label for="text" class="col-sm-3 control-label">Сообщение:</label>
+						<div class="col-sm-7">
+							<textarea class="form-control" id="text" name="text" rows="5"></textarea>
 						</div>
-						<div class="control-group">
-							<!-- Стоимость -->
-							<label class="control-label" for="text">Сообщение</label>
-							<div class="controls">
-								<textarea id="text" name="text" class="input-xxlarge" rows="5"></textarea>
-							</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-primary">Создать</button>
 						</div>
-						<div class="control-group">
-							<!-- Кнопка -->
-							<div class="controls">
-								<button type="submit" class="btn btn-success"><i class="icon-ok"></i> Создать</button>
-							</div>
-						</div>
-					</fieldset>
+					</div>
 				</form>
 				<script>
 					$('#createForm').ajaxForm({ 

@@ -5,80 +5,80 @@
 */
 ?>
 <?php echo $header ?>
-				<h1>Создание игры</h1>	
+				<div class="page-header">
+					<h1>Создание игры</h1>
+				</div>
 				<form class="form-horizontal" action="#" id="createForm" method="POST">
-					<fieldset>
-						<div id="legend">
-							<legend>Основные параметры</legend>
+					<h3>Основная информация</h3>
+					<div class="form-group">
+						<label for="name" class="col-sm-3 control-label">Название:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="name" name="name" placeholder="Введите название">
 						</div>
-						<div class="control-group">
-							<!-- Название -->
-							<label class="control-label" for="name">Название</label>
-							<div class="controls">
-								<input type="text" id="name" name="name" class="input-xlarge">
+					</div>
+					<div class="form-group">
+						<label for="code" class="col-sm-3 control-label">Код:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="code" name="code" placeholder="Введите код">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="query" class="col-sm-3 control-label">Query-драйвер:</label>
+						<div class="col-sm-3">
+							<select class="form-control" id="query" name="query">
+								<?php foreach($queryDrivers as $item): ?> 
+								<option value="<?php echo $item ?>"><?php echo $item ?></option>
+								<?php endforeach; ?> 
+							</select>
+						</div>
+					</div>
+					<h3>Дополнительная информация</h3>
+					<div class="form-group">
+						<label for="minslots" class="col-sm-3 control-label">Слоты:</label>
+						<div class="col-sm-4">
+							<div class="input-group">
+								<span class="input-group-addon">от</span>
+								<input type="text" class="form-control" id="minslots" name="minslots">
+								<span class="input-group-addon">до</span>
+								<input type="text" class="form-control" id="maxslots" name="maxslots">
 							</div>
 						</div>
-						<div class="control-group">
-							<!-- Код -->
-							<label class="control-label" for="code">Код</label>
-							<div class="controls">
-								<input type="text" id="code" name="code" class="input-large">
+					</div>
+					<div class="form-group">
+						<label for="minport" class="col-sm-3 control-label">Порты:</label>
+						<div class="col-sm-4">
+							<div class="input-group">
+								<span class="input-group-addon">от</span>
+								<input type="text" class="form-control" id="minport" name="minport">
+								<span class="input-group-addon">до</span>
+								<input type="text" class="form-control" id="maxport" name="maxport">
 							</div>
 						</div>
-						<div class="control-group">
-							<!-- Query -->
-							<label class="control-label" for="query">Query-драйвер</label>
-							<div class="controls">
-								<select id="query" name="query" class="input-small">
-									<?php foreach($queryDrivers as $item): ?> 
-									<option value="<?php echo $item ?>"><?php echo $item ?></option>
-									<?php endforeach; ?> 
-								</select>
+					</div>
+					<div class="form-group">
+						<label for="price" class="col-sm-3 control-label">Стоимость:</label>
+						<div class="col-sm-3">
+							<div class="input-group">
+								<input type="text" class="form-control" id="price" name="price">
+								<span class="input-group-addon">руб.</span>
 							</div>
 						</div>
-						<div id="legend">
-							<legend>Прочее</legend>
+					</div>
+					<div class="form-group">
+						<label for="status" class="col-sm-3 control-label">Статус:</label>
+						<div class="col-sm-3">
+							<select class="form-control" id="status" name="status">
+								<option value="0">Выключена</option>
+								<option value="1">Включена</option>
+							</select>
 						</div>
-						<div class="control-group">
-							<!-- Слоты -->
-							<label class="control-label" for="minslots">Слоты</label>
-							<div class="controls">
-								<input type="text" id="minslots" name="minslots" class="input-small"> - <input type="text" id="maxslots" name="maxslots" class="input-small">
-							</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-primary">Создать</button>
 						</div>
-						<div class="control-group">
-							<!-- Порты -->
-							<label class="control-label" for="minport">Порты</label>
-							<div class="controls">
-								<input type="text" id="minport" name="minport" class="input-small"> - <input type="text" id="maxport" name="maxport" class="input-small">
-							</div>
-						</div>
-						<div class="control-group">
-							<!-- Стоимость -->
-							<label class="control-label" for="price">Стоимость</label>
-							<div class="controls">
-								<input type="text" id="price" name="price" class="input-small">
-							</div>
-						</div>
-						<div class="control-group">
-							<!-- Статус -->
-							<label class="control-label" for="status">Статус</label>
-							<div class="controls">
-								<select id="status" name="status" class="input-large">
-									<option value="0">Выключена</option>
-									<option value="1">Включена</option>
-								</select>
-							</div>
-						</div>
-						<div class="control-group">
-							<!-- Кнопка -->
-							<div class="controls">
-								<button type="submit" class="btn btn-success"><i class="icon-ok"></i> Сохранить</button>
-							</div>
-						</div>
-					</fieldset>
+					</div>
 				</form>
-				
 				<script>
 					$('#createForm').ajaxForm({ 
 						url: '/admin/games/create/ajax',

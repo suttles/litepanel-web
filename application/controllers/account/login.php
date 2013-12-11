@@ -13,7 +13,7 @@ class loginController extends Controller {
 			$this->response->redirect($this->config->url);
 		}
 
-		$this->getChild(array('common/header', 'common/footer'));
+		$this->getChild(array('common/loginheader', 'common/loginfooter'));
 		return $this->load->view('account/login', $this->data);
 	}
 	

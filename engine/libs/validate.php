@@ -69,5 +69,14 @@ class ValidateLibrary {
 		*/
 		return preg_match("/^([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})\.([0-9]{1,3})$/", $ip);
 	}
+
+	public function md5($md) {
+		/*
+
+			Разрешенные символы: a-f и 0-9
+			Длина: 1
+		*/
+		return preg_match("/^([a-f0-9]{32})$/", $md);
+	}
 }
 ?>

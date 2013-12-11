@@ -13,7 +13,7 @@ class registerController extends Controller {
 			$this->response->redirect($this->config->url);
 		}
 
-		$this->getChild(array('common/header', 'common/footer'));
+		$this->getChild(array('common/loginheader', 'common/loginfooter'));
 		return $this->load->view('account/register', $this->data);
 	}
 	

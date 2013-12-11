@@ -4,9 +4,7 @@
 * @Developed by QuickDevel
 */
 ?>
-			</div>
-    	</div>
-    </div>
+	</div>
     <!-- /Powered by LitePanel -->
 </body>
 </html>

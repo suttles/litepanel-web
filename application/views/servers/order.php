@@ -5,94 +5,78 @@
 */
 ?>
 <?php echo $header ?>
-				<h2>Заказ сервера</h2>
+				<div class="page-header">
+					<h1>Заказать сервер</h1>
+				</div>
 				<form class="form-horizontal" action="#" id="orderForm" method="POST">
-					<fieldset>
-						<div id="legend">
-							<legend>Общая информация</legend>
+					<h3>Основная информация</h3>
+					<div class="form-group">
+						<label for="game" class="col-sm-3 control-label">Игра:</label>
+						<div class="col-sm-5">
+							<select class="form-control" id="gameid" name="gameid" onChange="updateForm()">
+								<?php foreach($games as $item): ?> 
+								<option value="<?php echo $item['game_id'] ?>"><?php echo $item['game_name'] ?></option>
+								<?php endforeach; ?> 
+							</select>
 						</div>
-						<div class="control-group">
-							<!-- Игра -->
-							<label class="control-label" for="gameid">Игра</label>
-							<div class="controls">
-								<select id="gameid" name="gameid" onChange="updateForm()">
-									<?php foreach($games as $item): ?> 
-									<option value="<?php echo $item['game_id'] ?>"><?php echo $item['game_name'] ?></option>
-									<?php endforeach; ?> 
-								</select>
+					</div>
+					<div class="form-group">
+						<label for="location" class="col-sm-3 control-label">Локация:</label>
+						<div class="col-sm-5">
+							<select class="form-control" id="locationid" name="locationid">
+								<?php foreach($locations as $item): ?> 
+								<option value="<?php echo $item['location_id'] ?>"><?php echo $item['location_name'] ?></option>
+								<?php endforeach; ?> 
+							</select>
+						</div>
+					</div>
+					<h3>Дополнительная информация</h3>
+					<div class="form-group">
+						<label for="months" class="col-sm-3 control-label">Период оплаты:</label>
+						<div class="col-sm-3">
+							<select class="form-control" id="months" name="months" onChange="updateForm()">
+								<option value="1">1 месяц</option>
+								<option value="3">3 месяца (-5%)</option>
+								<option value="6">6 месяцев (-10%)</option>
+								<option value="12">12 месяцев (-15%)</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="months" class="col-sm-3 control-label">Количество слотов:</label>
+						<div class="col-sm-2">
+							<div class="input-group">
+								<span class="input-group-btn"><button class="btn btn-default" type="button" onClick="minusSlots()">-</button></span>
+								<input type="text" class="form-control" id="slots" name="slots">
+								<span class="input-group-btn"><button class="btn btn-default" type="button" onClick="plusSlots()">+</button></span>
 							</div>
 						</div>
-						<div class="control-group">
-							<!-- Локация -->
-							<label class="control-label" for="locationid">Локация</label>
-							<div class="controls">
-								<select id="locationid" name="locationid">
-									<?php foreach($locations as $item): ?> 
-									<option value="<?php echo $item['location_id'] ?>"><?php echo $item['location_name'] ?></option>
-									<?php endforeach; ?> 
-								</select>
-							</div>
+					</div>
+					<h3>Пароль</h3>
+					<div class="form-group">
+						<label for="password" class="col-sm-3 control-label">Пароль:</label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" id="password" name="password" placeholder="Введите пароль">
 						</div>
-						<div id="legend">
-							<legend>Дополнительная информация</legend>
+					</div>
+					<div class="form-group">
+						<label for="password2" class="col-sm-3 control-label">Повторите пароль:</label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" id="password2" name="password2" placeholder="Повторите пароль">
 						</div>
-						<div class="control-group">
-							<!-- Период оплаты -->
-							<label class="control-label" for="locationid">Период оплаты</label>
-							<div class="controls">
-								<select id="months" name="months" onChange="updateForm()">
-									<option value="1">1 месяц</option>
-									<option value="3">3 месяца (-5%)</option>
-									<option value="6">6 месяцев (-10%)</option>
-									<option value="12">12 месяцев (-15%)</option>
-								</select>
-							</div>
+					</div>
+					<h3>Стоимость</h3>
+					<div class="form-group">
+						<label for="price" class="col-sm-3 control-label">Итого:</label>
+						<div class="col-sm-5">
+							<p class="lead" id="price">0.00 руб.</p>
 						</div>
-						<div class="control-group">
-							<!-- Количество слотов -->
-							<label class="control-label"  for="slots">Количество слотов</label>
-							<div class="controls">
-								<div class="input-prepend input-append">
-									<button class="btn" type="button" onClick="minusSlots();">-</button>
-									<input type="text" id="slots" name="slots" class="input-mini" onChange="updateForm()">
-									<button class="btn" type="button" onClick="plusSlots();">+</button>
-								</div>
-							</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-primary">Заказать</button>
 						</div>
-						<div id="legend">
-							<legend>Пароль</legend>
-						</div>
-						<div class="control-group">
-							<!-- Пароль -->
-							<label class="control-label" for="password">Пароль</label>
-							<div class="controls">
-								<input type="password" id="password" name="password" class="input-xlarge">
-							</div>
-						</div>
-						<div class="control-group">
-							<!-- Повтор пароля -->
-							<label class="control-label" for="password">Повторите пароль</label>
-							<div class="controls">
-								<input type="password" id="password2" name="password2" class="input-xlarge">
-							</div>
-						</div>
-						<div id="legend">
-							<legend>Стоимость</legend>
-						</div>
-						<div class="control-group">
-							<!-- Стоимость -->
-							<label class="control-label" for="price">Итого</label>
-							<div class="controls">
-								<p class="lead" id="price">0.00 рублей.</p>
-							</div>
-						</div>
-						<div class="control-group">
-							<!-- Кнопка -->
-							<div class="controls">
-								<button type="submit" class="btn btn-success"><i class="icon-ok"></i> Заказать</button>
-							</div>
-						</div>
-					</fieldset>
+					</div>
 				</form>
 				<script>
 					var gameData = {
@@ -147,13 +131,13 @@
 						var months = $("#months option:selected").val();
 						switch(months) {
 							case "3":
-								price = 3*price*0.95;
+								price = 3 * price * 0.95;
 								break;
 							case "6":
-								price = 6*price*0.90;
+								price = 6 * price * 0.90;
 								break;
 							case "12":
-								price = 12*price*0.85;
+								price = 12 * price * 0.85;
 								break;
 						}
 						$('#price').text(price.toFixed(2) + ' руб.');

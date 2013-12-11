@@ -5,6 +5,9 @@
 */
 class indexController extends Controller {
 	public function index() {
+		$this->document->setActiveSection('main');
+		$this->document->setActiveItem('index');
+		
 		if(!$this->user->isLogged()) {
 			$this->response->redirect($this->config->url . 'account/login');
 		}

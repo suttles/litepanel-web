@@ -5,8 +5,10 @@
 */
 ?>
 <?php echo $header ?>
-				<h2>Все игры</h2>
-				<table class="table table-striped table-condensed">
+				<div class="page-header">
+					<h1>Все игры</h1>
+				</div>
+				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
 							<th>ID</th>
@@ -20,25 +22,29 @@
 					</thead>
 					<tbody>
 						<?php foreach($games as $item): ?> 
-						<tr>
+						<tr onClick="redirect('/admin/games/edit/index/<?php echo $item['game_id'] ?>')">
 							<td>#<?php echo $item['game_id'] ?></td>
 							<td>
-							<?php if($item['game_status'] == 0): ?> 
-								<span class="label label-important">Выключена</span>
-							<?php elseif($item['game_status'] == 1): ?> 
+								<?php if($item['game_status'] == 0): ?> 
+								<span class="label label-danger">Выключена</span>
+								<?php elseif($item['game_status'] == 1): ?> 
 								<span class="label label-success">Включена</span>
-							<?php endif; ?> 
+								<?php endif; ?>
 							</td>
 							<td><?php echo $item['game_name'] ?></td>
 							<td><?php echo $item['game_code'] ?></td>
 							<td><?php echo $item['game_min_slots'] ?> - <?php echo $item['game_max_slots'] ?></td>
 							<td><?php echo $item['game_min_port'] ?> - <?php echo $item['game_max_port'] ?></td>
-							<td><?php echo $item['game_price'] ?></td>
-							<td><a href="/admin/games/edit/index/<?php echo $item['game_id'] ?>" class="btn btn-mini"><i class="icon-chevron-right"></i></a></td>
+							<td><?php echo $item['game_price'] ?> руб.</td>
 						</tr>
 						<?php endforeach; ?> 
+						<?php if(empty($games)): ?> 
 						<tr>
-							<td colspan="<?php if(empty($games)): ?>7<?php else: ?>8<?php endif; ?>" style="text-align: center;"><a href="/admin/games/create" class="btn">Создать игру</a></td>
+							<td colspan="7" class="text-center">На данный момент нет игр.</td>
+						<tr>
+						<?php endif; ?> 
+						<tr>
+							<td colspan="7" class="text-center"><a href="/admin/games/create" class="btn btn-default">Создать игру</a></td>
 						</tr>
 					</tbody>
 				</table>

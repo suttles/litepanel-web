@@ -59,11 +59,12 @@ class orderController extends Controller {
 		if($this->request->server['REQUEST_METHOD'] == 'POST') {
 			$errorPOST = $this->validatePOST();
 			if(!$errorPOST) {
-				$gameid = $this->request->post['gameid'];
-				$locationid = $this->request->post['locationid'];
-				$slots = $this->request->post['slots'];
-				$months = $this->request->post['months'];
-				$password = $this->request->post['password'];
+				$gameid = @$this->request->post['gameid'];
+				$locationid = @$this->request->post['locationid'];
+				$slots = @$this->request->post['slots'];
+				$months = @$this->request->post['months'];
+				$password = @$this->request->post['password'];
+				$password2 = @$this->request->post['password2'];
 				
 				$userid = $this->user->getId();
 				$balance = $this->user->getBalance();

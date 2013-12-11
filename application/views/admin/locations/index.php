@@ -5,8 +5,10 @@
 */
 ?>
 <?php echo $header ?>
-				<h2>Все локации</h2>
-				<table class="table table-striped table-condensed">
+				<div class="page-header">
+					<h1>Все игры</h1>
+				</div>
+				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
 							<th>ID</th>
@@ -18,24 +20,28 @@
 					</thead>
 					<tbody>
 						<?php foreach($locations as $item): ?> 
-						<tr>
+						<tr onClick="redirect('/admin/locations/edit/index/<?php echo $item['location_id'] ?>')">
 							<td>#<?php echo $item['location_id'] ?></td>
 							<td>
-							<?php if($item['location_status'] == 0): ?> 
-								<span class="label label-important">Выключена</span>
-							<?php elseif($item['location_status'] == 1): ?> 
+								<?php if($item['location_status'] == 0): ?> 
+								<span class="label label-danger">Выключена</span>
+								<?php elseif($item['location_status'] == 1): ?> 
 								<span class="label label-success">Включена</span>
-							<?php endif; ?> 
+								<?php endif; ?> 
 							</td>
 							<td><?php echo $item['location_name'] ?></td>
 							<td><?php echo $item['location_ip'] ?></td>
 							<td><?php echo $item['location_user'] ?></td>
-							<td><a href="/admin/locations/edit/index/<?php echo $item['location_id'] ?>" class="btn btn-mini"><i class="icon-chevron-right"></i></a></td>
 						</tr>
 						<?php endforeach; ?> 
+						<?php if(empty($locations)): ?> 
 						<tr>
-							<td colspan="<?php if(empty($locations)): ?>5<?php else: ?>6<?php endif; ?>" style="text-align: center;"><a href="/admin/locations/create" class="btn">Создать локацию</a></td>
-						</tr>
+							<td colspan="5" class="text-center">На данный момент нет локаций.</td>
+						<tr>
+						<?php endif; ?> 
+						<tr>
+							<td colspan="5" class="text-center"><a href="/admin/locations/create" class="btn btn-default">Создать локацию</a></td>
+						<tr>
 					</tbody>
 				</table>
 				<?php echo $pagination ?> 

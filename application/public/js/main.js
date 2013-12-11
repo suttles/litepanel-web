@@ -5,7 +5,7 @@
 
 /* Ошибки, предупреждения... */
 function showError(text) {
-	var element = $('<div class="alert alert-error"><strong>Ошибка!</strong> ' + text + '</div>').prependTo('#content');
+	var element = $('<div class="alert alert-danger"><strong>Ошибка!</strong> ' + text + '</div>').prependTo('#content');
 	setTimeout(function() {
 		element.fadeOut(500, function() {
 			$(this).remove();
@@ -13,7 +13,7 @@ function showError(text) {
 	}, 10000);
 }
 function showWarning(text) {
-	var element = $('<div class="alert"><strong>Внимание!</strong> ' + text + '</div>').prependTo('#content');
+	var element = $('<div class="alert alert-warning"><strong>Внимание!</strong> ' + text + '</div>').prependTo('#content');
 	setTimeout(function() {
 		element.fadeOut(500, function() {
 			$(this).remove();
@@ -40,4 +40,25 @@ function reloadImage(img) {
 
 function reload() {
 	window.location.reload();
+}
+
+function setNavMode(mode) {
+	switch(mode) {
+		case "user":
+		{
+			$('#administratorNavModeBtn').removeClass("active");
+			$('#userNavModeBtn').addClass("active");
+			$('#administratorNavMode').hide();
+			$('#userNavMode').fadeIn(500);
+			break;
+		}
+		case "administrator":
+		{
+			$('#userNavModeBtn').removeClass("active");
+			$('#administratorNavModeBtn').addClass("active");
+			$('#userNavMode').hide();
+			$('#administratorNavMode').fadeIn(500);
+			break;
+		}
+	}
 }

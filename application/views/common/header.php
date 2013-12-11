@@ -8,104 +8,99 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="<?php echo $description ?>">
 	<meta name="keywords" content="<?php echo $keywords ?>">
 	<meta name="generator" content="LitePanel">
+	
 	<title><?php echo $title ?> | <?php echo $description ?></title>
-	<link href="/application/public/css/style.css" rel="stylesheet">
-	<script src="/application/public/js/jquery.js"></script>
-	<script src="/application/public/js/jquery.form.js"></script>
-	<script src="/application/public/js/jquery.flot.js"></script>
-	<script src="/application/public/js/bootstrap.js"></script>
+    
+    <link href="/application/public/css/main.css" rel="stylesheet">
+	<link href="/application/public/css/bootstrap.min.css" rel="stylesheet">
+	<!--link href="/application/public/css/bootstrap-theme.min.css" rel="stylesheet"-->
+	
+	<script src="/application/public/js/jquery.min.js"></script>
+	<script src="/application/public/js/jquery.form.min.js"></script>
+	<script src="/application/public/js/jquery.flot.min.js"></script>
+	<script src="/application/public/js/jquery.flot.time.min.js"></script>
+	<script src="/application/public/js/bootstrap.min.js"></script>
 	<script src="/application/public/js/main.js"></script>
 </head>
 <body>
 	<!-- Powered by LitePanel -->
-	
-	<!-- Меню -->
-	<div class="navbar navbar-inverse" id="mainmenu">
-		<div class="navbar-inner">
-			<div class="container-fluid">
-				<a class="brand" href="/">LitePanel</a>
-				<?php if($logged): ?> 
-				<div class="nav-collapse collapse">
-					<ul class="nav">
-						<li<?php if($activesection == "main"): ?> class="active"<?php endif; ?>><a href="/"><i class="icon-home icon-white"></i> Главная</a></li>
-						<li class="divider-vertical"></li>
-						<li<?php if($activesection == "servers"): ?> class="active"<?php endif; ?>><a href="/servers/index"><i class="icon-hdd icon-white"></i> Сервера</a></li>
-						<li class="divider-vertical"></li>
-						<li<?php if($activesection == "tickets"): ?> class="active"<?php endif; ?>><a href="/tickets/index"><i class="icon-headphones icon-white"></i> Поддержка</a></li>
-						<li class="divider-vertical"></li>
-					</ul>
-					<div class="btn-group pull-right">
-						<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-							<i class="icon-user"></i> <?php echo $user_firstname ?> <?php echo $user_lastname ?> <span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a href="/account/pay"><i class="icon-plus"></i> Баланс: <?php echo $user_balance ?> руб.</a></li>
-							<li><a href="/account/edit"><i class="icon-wrench"></i> Настройки</a></li>
-							<li class="divider"></li>
-							<li><a href="/account/logout"><i class="icon-share"></i> Выход</a></li>
-						</ul>
-					</div>
-				</div>
-				<?php else: ?> 
-				<div class="nav-collapse collapse">
-					<ul class="nav">
-						<li<?php if($activesection == "account" && $activeitem == "login"): ?> class="active"<?php endif; ?>><a href="/account/login"><i class="icon-home icon-white"></i> Вход</a></li>
-						<li class="divider-vertical"></li>
-						<li<?php if($activesection == "account" && $activeitem == "register"): ?> class="active"<?php endif; ?>><a href="/account/register"><i class="icon-home icon-white"></i> Регистрация</a></li>
-						<li class="divider-vertical"></li>
-					</ul>
-				</div>
-				<?php endif; ?> 
+	<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">LitePanel</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li<?php if($activesection == "main"): ?> class="active"<?php endif; ?>><a href="/main/index">Главная</a></li>
+					<li<?php if($activesection == "servers"): ?> class="active"<?php endif; ?>><a href="/servers/index">Сервера</a></li>
+					<li<?php if($activesection == "tickets"): ?> class="active"<?php endif; ?>><a href="/tickets/index">Поддержка</a></li>
+				</ul>
 			</div>
 		</div>
-	</div>
-	<!-- /Меню -->
-	
-	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span3" id="sidebar">
-				<div class="sidebar-nav">
-					<div class="well" style="padding: 8px 0;">
-						<ul class="nav nav-list">
-							<?php if($logged): ?> 
-							<li class="nav-header">Сервера</li>
-							<li<?php if($activesection == "servers" && $activeitem == "index"): ?> class="active"<?php endif; ?>><a href="/servers/index"><i class="icon-hdd"></i> Мои сервера</a></li>
-							<li<?php if($activesection == "servers" && $activeitem == "order"): ?> class="active"<?php endif; ?>><a href="/servers/order"><i class="icon-plus"></i> Заказать сервер</a></li>
-							<li class="divider"></li>
-							<li class="nav-header">Поддержка</li>
-							<li<?php if($activesection == "tickets" && $activeitem == "index"): ?> class="active"<?php endif; ?>><a href="/tickets/index"><i class="icon-headphones"></i> Мои запросы</a></li>
-							<li<?php if($activesection == "tickets" && $activeitem == "create"): ?> class="active"<?php endif; ?>><a href="/tickets/create"><i class="icon-plus"></i> Создать запрос</a></li>
-							<?php if($user_access_level >= 2): ?> 
-							<li class="divider"></li>
-							<li class="nav-header">Усправление системой</li>
-							<li<?php if($activesection == "admin" && $activeitem == "servers"): ?> class="active"<?php endif; ?>><a href="/admin/servers/index"><i class="icon-hdd"></i> Сервера</a></li>
-							<li<?php if($activesection == "admin" && $activeitem == "tickets"): ?> class="active"<?php endif; ?>><a href="/admin/tickets/index"><i class="icon-headphones"></i> Поддержка</a></li>
-							<li<?php if($activesection == "admin" && $activeitem == "users"): ?> class="active"<?php endif; ?>><a href="/admin/users/index"><i class="icon-user"></i> Пользователи</a></li>
-							<li<?php if($activesection == "admin" && $activeitem == "invoices"): ?> class="active"<?php endif; ?>><a href="/admin/invoices/index"><i class="icon-list-alt"></i> Счета</a></li>
-							<?php endif; ?> 
-							<?php if($user_access_level >= 3): ?> 
-							<li<?php if($activesection == "admin" && $activeitem == "games"): ?> class="active"<?php endif; ?>><a href="/admin/games/index"><i class="icon-screenshot"></i> Игры</a></li>
-							<li<?php if($activesection == "admin" && $activeitem == "locations"): ?> class="active"<?php endif; ?>><a href="/admin/locations/index"><i class="icon-tasks"></i> Локации</a></li>
-							<?php endif; ?> 
-							<li class="divider"></li>
-							<li class="nav-header">Аккаунт</li>
-							<li<?php if($activesection == "account" && $activeitem == "pay"): ?> class="active"<?php endif; ?>><a href="/account/pay"><i class="icon-plus"></i> Пополнение баланса</a></li>
-							<li<?php if($activesection == "account" && $activeitem == "invoices"): ?> class="active"<?php endif; ?>><a href="/account/invoices"><i class="icon-list-alt"></i> Счета</a></li>
-							<li<?php if($activesection == "account" && $activeitem == "edit"): ?> class="active"<?php endif; ?>><a href="/account/edit"><i class="icon-wrench"></i> Настройки</a></li>
-							<li><a href="/account/logout"><i class="icon-share"></i> Выход</a></li>
-							<?php else: ?>
-							<li <?php if($activesection == "account" && $activeitem == "login"): ?> class="active"<?php endif; ?>><a href="/account/login"><i class="icon-check"></i> Вход</a></li>
-							<li<?php if($activesection == "account" && $activeitem == "register"): ?> class="active"<?php endif; ?>><a href="/account/register"><i class="icon-star"></i> Регистрация</a></li>
-							<?php endif; ?> 
-						</ul>
+    </div>
+    <div class="container">
+    	<div class="row">
+    		<div class="col-md-3">
+    			<?php if($user_access_level >= 2): ?>
+    			<div class="text-center">
+					<div class="btn-group btn-group-sm">
+						<button type="button" class="btn btn-default<?php if($activesection != "admin"): ?> active<?php endif; ?>" id="userNavModeBtn" onClick="setNavMode('user')">Пользователь</button>
+						<button type="button" class="btn btn-default<?php if($activesection == "admin"): ?> active<?php endif; ?>" id="administratorNavModeBtn" onClick="setNavMode('administrator')">Администратор</button>
+					</div>
+    			</div>
+    			<?php endif; ?> 
+    			<div id="userNavMode"<?php if($activesection == "admin"): ?> style="display: none;"<?php endif; ?>>
+					<h3>Сервера</h3>
+					<div class="list-group">
+						<a href="/servers/index" class="list-group-item<?php if($activesection == "servers" && $activeitem == "index"): ?> active<?php endif; ?>"><span class="glyphicon glyphicon-hdd"></span> Мои сервера</a>
+						<a href="/servers/order" class="list-group-item<?php if($activesection == "servers" && $activeitem == "order"): ?> active<?php endif; ?>"><span class="glyphicon glyphicon-plus"></span> Заказать сервер</a>
+					</div>
+					<h3>Поддержка</h3>
+					<div class="list-group">
+						<a href="/tickets/index" class="list-group-item<?php if($activesection == "tickets" && $activeitem == "index"): ?> active<?php endif; ?>"><span class="glyphicon glyphicon-headphones"></span> Мои запросы</a>
+						<a href="/tickets/create" class="list-group-item<?php if($activesection == "tickets" && $activeitem == "create"): ?> active<?php endif; ?>"><span class="glyphicon glyphicon-plus"></span> Создать запрос</a>
+					</div>
+					<h3>Аккаунт</h3>
+					<div class="list-group">
+						<a href="/account/pay" class="list-group-item<?php if($activesection == "account" && $activeitem == "pay"): ?> active<?php endif; ?>"><span class="glyphicon glyphicon-usd"></span> Пополнение баланса</a>
+						<a href="/account/invoices" class="list-group-item<?php if($activesection == "account" && $activeitem == "invoices"): ?> active<?php endif; ?>"><span class="glyphicon glyphicon-list"></span> Счета</a>
+						<a href="/account/edit" class="list-group-item<?php if($activesection == "account" && $activeitem == "edit"): ?> active<?php endif; ?>"><span class="glyphicon glyphicon-wrench"></span> Настройки</a>
+						<a href="/account/logout" class="list-group-item"><span class="glyphicon glyphicon-log-out"></span> Выход</a>
 					</div>
 				</div>
-				<div class="copyright">Powered by <a href="http://litepanel.ru">LitePanel</a>.</div>
-			</div>
-			<div class="span9" id="content">
-			<?php if(isset($error)): ?><div class="alert alert-error"><strong>Ошибка!</strong> <?php echo $error ?></div><?php endif; ?> 
-			<?php if(isset($warning)): ?><div class="alert"><strong>Внимание!</strong> <?php echo $warning ?></div><?php endif; ?> 
-			<?php if(isset($success)): ?><div class="alert alert-success"><strong>Выполнено!</strong> <?php echo $success ?></div><?php endif; ?> 
+				<?php if($user_access_level >= 2): ?>
+    			<div id="administratorNavMode"<?php if($activesection != "admin"): ?> style="display: none;"<?php endif; ?>>
+    				<?php if($user_access_level >= 2): ?> 
+					<h3>Поддержка</h3>
+					<div class="list-group">
+						<a href="/admin/servers/index" class="list-group-item<?php if($activesection == "admin" && $activeitem == "servers"): ?> active<?php endif; ?>"><span class="glyphicon glyphicon-hdd"></span> Все сервера</a>
+						<a href="/admin/tickets/index" class="list-group-item<?php if($activesection == "admin" && $activeitem == "tickets"): ?> active<?php endif; ?>"><span class="glyphicon glyphicon-headphones"></span> Все запросы</a>
+						<a href="/admin/users/index" class="list-group-item<?php if($activesection == "admin" && $activeitem == "users"): ?> active<?php endif; ?>"><span class="glyphicon glyphicon-user"></span> Все пользователи</a>
+						<a href="/admin/invoices/index" class="list-group-item<?php if($activesection == "admin" && $activeitem == "invoices"): ?> active<?php endif; ?>"><span class="glyphicon glyphicon-list"></span> Все счета</a>
+					</div>
+					<?php endif; ?> 
+					<?php if($user_access_level >= 3): ?> 
+					<h3>Управление</h3>
+					<div class="list-group">
+						<a href="/admin/games/index" class="list-group-item<?php if($activesection == "admin" && $activeitem == "games"): ?> active<?php endif; ?>"><span class="glyphicon glyphicon-tower"></span> Все игры</a>
+						<a href="/admin/locations/index" class="list-group-item<?php if($activesection == "admin" && $activeitem == "locations"): ?> active<?php endif; ?>"><span class="glyphicon glyphicon-globe"></span> Все локации</a>
+					</div>
+					<?php endif; ?> 
+				</div>
+				<?php endif; ?> 
+				<div class="text-center text-muted">Работает на <a href="#">LitePanel</a>.</div>
+    		</div>
+    		<div id="content" class="col-md-9">
+				<?php if(isset($error)): ?><div class="alert alert-danger"><strong>Ошибка!</strong> <?php echo $error ?></div><?php endif; ?> 
+				<?php if(isset($warning)): ?><div class="alert alert-warning"><strong>Внимание!</strong> <?php echo $warning ?></div><?php endif; ?> 
+				<?php if(isset($success)): ?><div class="alert alert-success"><strong>Выполнено!</strong> <?php echo $success ?></div><?php endif; ?> 

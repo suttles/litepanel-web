@@ -13,11 +13,11 @@ class restoreController extends Controller {
 			$this->response->redirect($this->config->url);
 		}
 
-		$this->getChild(array('common/header', 'common/footer'));
+		$this->getChild(array('common/loginheader', 'common/loginfooter'));
 		return $this->load->view('account/restore/index', $this->data);
 	}
 	
-	public function complete($userid, $restoreKey) {
+	public function complete($userid = null, $restoreKey = null) {
 		$this->document->setActiveSection('account');
 		$this->document->setActiveItem('restore');
 		
@@ -40,7 +40,7 @@ class restoreController extends Controller {
 		$this->usersModel->updateUser($userid, array('user_password' => md5($password), 'user_restore_key' => null));
 		$this->data['password'] = $password;
 		
-		$this->getChild(array('common/header', 'common/footer'));
+		$this->getChild(array('common/loginheader', 'common/loginfooter'));
 		return $this->load->view('account/restore/complete', $this->data);
 	}
 	

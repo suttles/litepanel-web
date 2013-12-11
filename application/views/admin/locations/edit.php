@@ -5,81 +5,69 @@
 */
 ?>
 <?php echo $header ?>
-				<h2>Редактирование локации</h2>
-				<a class="btn btn-danger pull-right" href="/admin/locations/edit/delete/<?php echo $location['location_id'] ?>">Удалить локацию</a>
+				<div class="page-header">
+					<h1>Редактирование локации</h1>
+				</div>
 				<div class="btn-group">
-					<a class="btn" href="/admin/servers/index?locationid=<?php echo $location['location_id'] ?>"><i class="icon-hdd"></i> Сервера локации</a>
+					<a href="/admin/servers/index?locationid=<?php echo $location['location_id'] ?>"" class="btn btn-default"><span class="glyphicon glyphicon-hdd"></span> Сервера локации</a>
+					<a href="/admin/locations/edit/delete/<?php echo $location['location_id'] ?>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Удалить локацию</a>
 				</div>
 				<form class="form-horizontal" action="#" id="editForm" method="POST">
-					<fieldset>
-						<div id="legend">
-							<legend>Основные параметры</legend>
+					<h3>Основная информация</h3>
+					<div class="form-group">
+						<label for="name" class="col-sm-3 control-label">Название:</label>
+						<div class="col-sm-4">
+							<input type="text" class="form-control" id="name" name="name" placeholder="Введите название" value="<?php echo $location['location_name'] ?>">
 						</div>
-						<div class="control-group">
-							<!-- Название -->
-							<label class="control-label" for="name">Название</label>
-							<div class="controls">
-								<input type="text" id="name" name="name" class="input-xlarge" value="<?php echo $location['location_name'] ?>">
+					</div>
+					<div class="form-group">
+						<label for="ip" class="col-sm-3 control-label">IP:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" id="ip" name="ip" placeholder="Введите IP" value="<?php echo $location['location_ip'] ?>">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="user" class="col-sm-3 control-label">Имя пользователя:</label>
+						<div class="col-sm-3">
+							<input type="text" class="form-control" id="user" name="user" placeholder="Введите имя пользователя" value="<?php echo $location['location_user'] ?>">
+						</div>
+					</div>
+					<h3>Пароль</h3>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<div class="checkbox">
+								<label><input type="checkbox" id="editpassword" name="editpassword" onChange="togglePassword()"> Изменить пароль</label>
 							</div>
 						</div>
-						<div class="control-group">
-							<!-- IP -->
-							<label class="control-label" for="ip">IP</label>
-							<div class="controls">
-								<input type="text" id="ip" name="ip" class="input-xlarge" value="<?php echo $location['location_ip'] ?>">
-							</div>
+					</div>
+					<div class="form-group">
+						<label for="password" class="col-sm-3 control-label">Пароль:</label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" id="password" name="password" placeholder="Пароль" disabled>
 						</div>
-						<div class="control-group">
-							<!-- Пользователь -->
-							<label class="control-label" for="user">Пользователь</label>
-							<div class="controls">
-								<input type="text" id="user" name="user" class="input-xlarge" value="<?php echo $location['location_user'] ?>">
-							</div>
+					</div>
+					<div class="form-group">
+						<label for="password2" class="col-sm-3 control-label">Повторите пароль:</label>
+						<div class="col-sm-4">
+							<input type="password" class="form-control" id="password2" name="password2" placeholder="Повторите пароль" disabled>
 						</div>
-						<div id="legend">
-							<legend>Пароль</legend>
+					</div>
+					<h3>Дополнительная информация</h3>
+					<div class="form-group">
+						<label for="status" class="col-sm-3 control-label">Статус:</label>
+						<div class="col-sm-3">
+							<select class="form-control" id="status" name="status">
+								<option value="0"<?php if($location['location_status'] == 0): ?> selected="selected"<?php endif; ?>>Выключена</option>
+								<option value="1"<?php if($location['location_status'] == 1): ?> selected="selected"<?php endif; ?>>Включена</option>
+							</select>
 						</div>
-						<div class="control-group">
-							<div class="controls">
-							<label><input type="checkbox" id="editpassword" name="editpassword" onChange="togglePassword()"> Сменить пароль?</label>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-3 col-sm-9">
+							<button type="submit" class="btn btn-primary">Изменить</button>
 						</div>
-						</div>
-							<div class="control-group">
-							<!-- Пароль -->
-							<label class="control-label" for="password">Пароль</label>
-							<div class="controls">
-								<input type="password" id="password" name="password" class="input-xlarge" disabled>
-							</div>
-						</div>
-						<div class="control-group">
-							<!-- Повтор пароля -->
-							<label class="control-label" for="password">Повторите пароль</label>
-							<div class="controls">
-								<input type="password" id="password2" name="password2" class="input-xlarge" disabled>
-							</div>
-						</div>
-						<div id="legend">
-							<legend>Прочее</legend>
-						</div>
-						<div class="control-group">
-							<!-- Статус -->
-							<label class="control-label" for="status">Статус</label>
-							<div class="controls">
-								<select id="status" name="status" class="input-large">
-									<option value="0" <?php if($location['location_status'] == 0): ?>selected="selected"<?php endif; ?>>Выключена</option>
-									<option value="1" <?php if($location['location_status'] == 1): ?>selected="selected"<?php endif; ?>>Включена</option>
-								</select>
-							</div>
-						</div>
-						<div class="control-group">
-							<!-- Кнопка -->
-							<div class="controls">
-								<button type="submit" class="btn btn-success"><i class="icon-ok"></i> Сохранить</button>
-							</div>
-						</div>
-					</fieldset>
+					</div>
 				</form>
-				
 				<script>
 					$('#editForm').ajaxForm({ 
 						url: '/admin/locations/edit/ajax/<?php echo $location['location_id'] ?>',
