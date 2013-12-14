@@ -8,7 +8,7 @@
 				<div class="page-header">
 					<h1>Создание локации</h1>
 				</div>
-				<form class="form-horizontal" action="#" id="editForm" method="POST">
+				<form class="form-horizontal" action="#" id="createForm" method="POST">
 					<h3>Основная информация</h3>
 					<div class="form-group">
 						<label for="name" class="col-sm-3 control-label">Название:</label>
