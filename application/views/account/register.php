@@ -17,7 +17,7 @@
 				<input type="password" class="form-control" id="password2" name="password2" placeholder="Повтор пароля">
 			</div>
 			<div class="form-control captcha">
-				<img src="http://litepanel.local/main/captcha">
+				<img src="/main/captcha">
 			</div>
 			<input type="text" class="form-control" id="captcha" name="captcha" placeholder="Проверочный код">
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>

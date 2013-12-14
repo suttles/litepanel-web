@@ -9,7 +9,7 @@
 			<h2 class="form-signin-heading">Восставновление</h2>
 			<input type="text" class="form-control" id="email" name="email" placeholder="E-Mail">
 			<div class="form-control captcha">
-				<img src="http://litepanel.local/main/captcha">
+				<img src="/main/captcha">
 			</div>
 			<input type="text" class="form-control" id="captcha" name="captcha" placeholder="Проверочный код">
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Восстановить</button>
